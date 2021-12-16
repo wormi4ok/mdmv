@@ -1,0 +1,29 @@
+builds:
+  - env:
+      - CGO_ENABLED=0
+    tags:
+      - osusergo
+      - netgo
+    flags:
+      - -trimpath
+    targets:
+      - darwin_amd64
+      - darwin_arm64
+      - linux_amd64
+      - windows_amd64
+
+archives:
+  - replacements:
+      darwin: MacOS
+      linux: Linux
+      windows: Windows
+      amd64: 64-bit
+      arm64: M1
+    format_overrides:
+      - goos: windows
+        format: zip
+    wrap_in_directory: false
+    files:
+      - none*
+release:
+  draft: true

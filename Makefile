@@ -10,7 +10,7 @@ test:
 ## build: build binary locally
 build: $(APP)
 $(APP):
-	go build -trimpath -ldflags "-s -w -X main.version=$(TAG)" -o $@ .
+	go build -tags="netgo osusergo" -trimpath -ldflags "-s -w -X main.version=$(TAG)" -o $@ .
 
 ## help: print this information
 help: Makefile
